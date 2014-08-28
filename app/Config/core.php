@@ -366,5 +366,5 @@ Cache::config('_cake_model_', array(
 
 Configure::write('Routing.prefixes', array('admin'));
 // Disable Url Rewrite (devel)
-Configure::write('App.baseUrl', env('SCRIPT_NAME'));
+// Configure::write('App.baseUrl', env('SCRIPT_NAME'));
 
