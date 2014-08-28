@@ -2,4 +2,6 @@
 /app/Config/database.php
 
 app/webroot/debug_kit/*
+app/webroot/img/data/*
+
 sftp-config.json
