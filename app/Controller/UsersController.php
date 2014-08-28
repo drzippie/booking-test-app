@@ -1,23 +1,17 @@
 <?php
 /**
- * Static content controller.
+ * Users Controller
  *
- * This file will render views from views/pages/
- *
- * @link          http://cakephp.org CakePHP(tm) Project
  * @package       app.Controller
- * @since         CakePHP(tm) v 0.2.9
  */
 
 App::uses('AppController', 'Controller');
 
 /**
- * Static content controller
+ * Users controller
  *
- * Override this controller by placing a copy in controllers directory of an application
  *
  * @package       app.Controller
- * @link http://book.cakephp.org/2.0/en/controllers/pages-controller.html
  */
 class UsersController extends AppController {
 
@@ -138,44 +132,39 @@ class UsersController extends AppController {
 
 
     }
+  
+	public function profile() {
+	    $this->loadModel( 'Reserva');
+	    $pendientes = $this->Reserva->find('all', array( 
+	        'conditions' => array( 
+	                'Reserva.user_id' => $this->Auth->user( 'id'),
+	                'Reserva.active' => 1 ,
+	            ),
+	        'recursive' => 1 
 
- public function profile() {
-    $this->loadModel( 'Reserva');
-    $pendientes = $this->Reserva->find('all', array( 
-        'conditions' => array( 
-                'Reserva.user_id' => $this->Auth->user( 'id'),
-                'Reserva.active' => 1 ,
-            ),
-        'recursive' => 1 
-
-        ));
-    $this->set('pendientes', $pendientes ) ;
-
-
-  }
-public function login() {
-  /*  $this->loadModel( 'Sidebar') ;
-    $sidebar = $this->Sidebar->find('first', array( 'conditions' => array( 
-        'Sidebar.id' => 49
-        )));
-    $this->set( 'Sidebar', $sidebar) ;
-
-    */
-    if ($this->request->is('post')) {
-        
-        if ($this->Auth->login( )) {
-
-
-            $this->redirect($this->Auth->redirect());
-        } else {
-             $this->Session->setFlash(__('Invalid username or password, try again'));
-        }
-    }
-}
-
-public function logout() {
-    $this->redirect($this->Auth->logout());
-}
+	        ));
+	    $this->set('pendientes', $pendientes ) ;
+	}
+	
+	/**
+	* Login User
+	* @return none 
+	*/
+	public function login() {
+	    if ($this->request->is('post')) {
+	        if ($this->Auth->login( )) {
+	            $this->redirect($this->Auth->redirect());
+	        } else {
+	             $this->Session->setFlash(__('Invalid username or password, try again'));
+	        }
+	    }
+	}
+	/**
+	 * Logout User
+	 */
+	public function logout() {
+	    $this->redirect($this->Auth->logout());
+	}
 
 
 }
