@@ -24,6 +24,10 @@ App::uses('Controller', 'Controller');
 class AppController extends Controller {
 
 
+    public $helpers = array(
+        'Thumbnail',
+    );
+
     public $components = array(
     	'DebugKit.Toolbar' => array('panels' => array('history' => false)), 
         'Session',

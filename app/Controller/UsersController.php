@@ -71,6 +71,20 @@ class UsersController extends AppController {
 
      }
 
+
+     
+public function zonaInterna() {
+ 
+    if ( $this->Auth->user('rol') == 'admin') {
+        $this->redirect( '/admin/') ;
+        
+    } else {
+        $this->redirect( '/users/profile/' ) ;
+    }
+
+
+}
+
     public function remember ( $id = null ) {
 
         $this->loadModel( 'User');
