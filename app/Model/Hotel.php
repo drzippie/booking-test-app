@@ -67,14 +67,13 @@ class Hotel extends AppModel {
 		
 
 	);
-
-
-
+    /**
+     * Path to images
+     * @return string path to images
+     */
  	public function getPathImages( ) {
  		return '/img/data/hotels/'  ;
  	}
-
-
 	/**
 	 * Add calculated fields to Hotels, like imageUrl
 	 * 
