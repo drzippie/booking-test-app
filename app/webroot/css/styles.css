@@ -1,3 +1,26 @@
 body {
-  background: #ddd;
+  background: #fff;
+}
+div.hotelList {
+  margin-bottom: 10px;
+  border-bottom: 1px dotted #eee;
+  padding-bottom: 10px;
+}
+div.hotelList div.stars {
+  float: right;
+  color: #00c;
+}
+div.hotelList div.name {
+  font-size: 1.2em;
+  font-weight: bolder;
+}
+div.hotelList div.location {
+  font-style: italic;
+  color: #333;
+}
+div.hotelList div.description {
+  background: #f0f0f0;
+  padding: 5px;
+  color: #666;
+  font-size: 0.9em;
 }

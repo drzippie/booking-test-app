@@ -7,16 +7,15 @@ $this->end( 'headermain');
 ?>
 
 
-<div class="row-fluid">
-	<div class="span12">
-		<div class="row-fluid">
-			<div class="span10">
-						<h1><?php echo __('Hotel Management'); ?></h1>
-
+<div class="row">
+	<div class="col-xs-12">
+		<div class="row">
+			<div class="col-xs-10">
+				<h1><?php echo __('Hotel Management'); ?></h1>
 			</div>
-			<div class="span2"> 
+			<div class="col-xs-2"> 
 				<?php
-echo $this->Html->link('<i class="icon-plus-sign"></i>' . __('Nueva') ,  
+echo $this->Html->link('<i class="icon-plus-sign"></i>' . __('New Hotel') ,  
 				array(
 			 		'controller' => 'hotels',
 			 	 	'action' => 'admin_add'
@@ -30,10 +29,8 @@ echo $this->Html->link('<i class="icon-plus-sign"></i>' . __('Nueva') ,
 		
 
 		<?php
-	echo $this->element('admin/paginator');
-
-
-?>
+			echo $this->element('admin/paginator');
+		?>
  
  
 
@@ -57,20 +54,20 @@ echo $this->Html->link('<i class="icon-plus-sign"></i>' . __('Nueva') ,
 
 
 						?></th>
-					 
- 					<th>
+					 <th><?php
+							echo $this->Paginator->sort('Hotel.stars', __( 'stars' ));
 
- 						<?php
 
- 						echo __('Info') ;
-						//	echo $this->Paginator->sort('tarifa_count', __( 'Tarifa' ));
+						?></th>
+ 					 <th><?php
+							echo $this->Paginator->sort('Hotel.room_count', __( 'Rooms' ));
 
 
 						?></th>
 					 
 					 
 					  
-						<th><?php echo __('Opciones'); ?></th>
+						<th><?php echo __('Actions'); ?></th>
 				</tr>
 			</thead>
 			<?php 
@@ -106,66 +103,44 @@ echo $this->Html->link('<i class="icon-plus-sign"></i>' . __('Nueva') ,
 					
   					</div>
  				</td>
-				<td><?php echo $item['Hotel']['location'] ?>
-					
+				<td>
+					<?php echo $item['Hotel']['location'] ?>
 				</td>
-  				<td style="width: 160px; font-size: 11px;">
-					<div class="row-fluid">
-						<div class="span6">
-						 
+				<td>
+					<?php echo $item['Hotel']['stars'] ?>
+				</td>
 
-						</div>
+  				<td>
+				 
+						 <?= $item['Hotel']['room_count'] ?>
 						 
-					</div>
 
 
   					</td>
-  				<td>
-  
-				</td>
-				<td>
-				 
-
- 				</td>
+  				 
 				<td>
 					<div class="btn-group">
 
 <?php
-			echo $this->Html->link(  __( 'Editar' ),  
+			echo $this->Html->link(  __( 'Edit' ),  
 				array(
-			 		'controller' => 'properties',
+			 		'controller' => 'hotels',
 			 	 	'action' => 'admin_edit',
 			 	 	$item['Hotel']['id'] ) , 
 				array('class' => 'btn btn-default radius btn-xs')
 			);
-			echo $this->Html->link(   __( 'Borrar' ),  
+			echo $this->Html->link(   __( 'Delete' ),  
 				array(
 					'admin'=>false, 
-			 		'controller' => 'properties', 
+			 		'controller' => 'hotels', 
 			 		'action' => 'del',
 			 	 	$item['Hotel']['id']  , 
 					'admin' => true 
 					),
 				array('class' => 'btn btn-default radius btn-xs'),
-				__('¿ Desea borrar el registro ?')
+				__(' Are you sure ?')
 			);
-			echo $this->Html->link(   __( 'Ver' ),  
-				array(
-					'admin'=>false, 
-			 		'controller' => 'ciudades', 
-			 		'action' => 'verFicha',
-					'slug' => $item['Hotel']['slug'] ) , 
-				array('class' => 'btn btn-default radius btn-xs')
-			);
-	echo $this->Html->link(   __( 'Calendario' ),  
-				array(
-					'admin' => true ,
- 			 		'controller' => 'properties', 
-			 		'action' => 'calendar',
-			 	 	$item['Hotel']['id']
-			 	 	 ) , 
-				array('class' => 'btn btn-default radius btn-xs')
-			);
+	
 
 ?>
 

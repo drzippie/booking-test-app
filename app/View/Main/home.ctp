@@ -6,7 +6,7 @@
 
 <?php foreach( $hotels as $item ) { ?>
 
-	<div class="row">
+	<div class="row hotelList" >
 		<div class="col-xs-2">
  
 				
@@ -28,9 +28,17 @@
  				?> 
 		</div>
 		<div class="col-xs-10">
-			<?= $item['Hotel']['name'] ?>: 
-			<?= $item['Hotel']['stars'] ?>
-			<div><?= $item['Hotel']['location'] ?></div>
+			<div class="stars">
+			<?php for( $i =0; $i < $item['Hotel']['stars'] ; $i++) { ?>
+				<i class="glyphicon glyphicon-star"></i>
+			<?php } ?>
+			 
+		</div>
+		<div class="name"><?= $item['Hotel']['name'] ?></div>
+		<div class="location"><?= $item['Hotel']['location'] ?></div>
+		<div class="description"><?= $item['Hotel']['description'] ?></div>
+
+ 				
 		</div>
 	</div>
 

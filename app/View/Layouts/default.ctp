@@ -20,20 +20,65 @@
 
 		<div class="row">
 			<div class="col-xs-2">
-				[LOGO]
+
+				<?php echo $this->Html->image('logo.jpg', array('alt' => 'Geek Hotels', 'class' => 'img-responsive')); ?>
+
 			</div>
 			<div class="col-xs-10">
-				[Menu]
+				 <em>Top menu</em>
 			</div>
 		</div>
 		<div class="row">
 			<div class="col-xs-2">
-				SIDEBAR
+				<h5>Main</h5>
+				<ul class="nav nav-pills nav-stacked">
+
+				<li><?php echo $this->Html->link( __('Home')  , array( 
+						 	'controller' => 'main' ,
+						 	'action' => 'home',
+						 	'admin' => false ), array( 'class' =>  '' )); ?></li>
+
+
+				<?php
+				/**
+				 *  @todo Create a custom sidebar for users
+				 */
+				?>
+				<?php 
+					if ( !empty( $user ) ) {
+				?>
+
+					<li><?php echo $this->Html->link( __('Hotels')  , array( 
+						 	'controller' => 'hotels' ,
+						 	'action' => 'index',
+						 	'admin' => true ), array( 'class' =>  '' )); ?></li>
+					<li><?php echo $this->Html->link( __('Logout') , array( 
+						 	'controller' => 'users' ,
+						 	'action' => 'logout',
+						 	'admin' => false ), array( 'class' =>  '' )); ?></li>  
+
+
+				<?php
+				} else {
+				?>
+ 					<li><?php echo $this->Html->link( __('Login') , array( 
+						 	'controller' => 'users' ,
+						 	'action' => 'login',
+						 	'admin' => false ), array( 'class' =>  '' )); ?></li> 
+				<?php
+					}
+	 			?>
+
+				</ul>
+
 			</div>
 			<div class="col-xs-10">
-				<h1><?php echo $this->fetch('title'); ?></h1>
-
-			<?php echo $this->Session->flash(); ?>
+			<?php $flash = $this->Session->flash() ; 
+				if (!empty( $flash )) {
+				?>
+				<div class="alert alert-warning" role="alert"><?= $flash ?></div>
+				<?php
+				} ?>
 
 			<?php echo $this->fetch('content'); ?>
 			</div>
@@ -41,12 +86,14 @@
 
  
 		<div id="footer">
-		 	[FOOTER]
+		 	<em>Footer</em>
 		</div>
 	</div>
 
    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+		<?= $this->Html->script('jsRender'); ?>
+
 	<?= $this->Html->script('functions'); ?>
 
 
