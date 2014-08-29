@@ -1,18 +1,26 @@
-booking-test-app
-================
-
-Booking Test App
+# booking-test-app
 
 
-Database Schema
+## Controllers
+
+### Main
+
+#### home()
+
+Show the home of website
 
 
+
+
+## Database Schema
  
 ![alt tag](docs/schema.png)
 
-[SQL File!](docs/database_schema.sql)
+View: [SQL File](docs/database_schema.sql)
 
-Demo: http://booking.besbello.com 
+## DEMO
+
+Url : http://booking.besbello.com 
 
 
 
