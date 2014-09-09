@@ -67,10 +67,4 @@ Seaching Hotel 1-3 stars, 2 pax, from: 2014-12-01 to 2014-12-03, city: Seville
 ![alt tag](docs/schema.png)
 
 View: [SQL File](docs/database_schema.sql)
-
-## DEMO
-
-Url : http://booking.besbello.com 
-
-
-
+ 
